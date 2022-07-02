@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>FiChat - Login</title>
+  </head>
+  <body class="text-slate-700">
+    <div class="h-screen flex justify-center items-center p-3">
+      <div class="text-center">
+        <h1 class="text-xl font-bold text-rose-500 mb-3">Login</h1>
+        <p>Silahkan masukan nama anda dan pilih roomnya!</p>
+
+        <form action="chat.html" method="get" class="my-3">
+          <div class="grid gap-3">
+            <div class="">
+              <input
+                type="text"
+                name="username"
+                class="
+                  border
+                  rounded-lg
+                  px-3
+                  py-2
+                  hover:ring
+                  focus:ring
+                  ring-rose-500/50
+                  hover:border-red-500
+                  focus:border-red-500
+                  outline-none
+                  duration-300
+                "
+                placeholder="Nama"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <div class="">
+              <select
+                name="room"
+                class="border rounded-lg px-3 py-2"
+                id="room"
+                required
+              >
+                <option value="" disabled selected>-- Pilih Room --</option>
+                <option>HTML</option>
+                <option>CSS</option>
+                <option>JavaScript</option>
+                <option>PHP</option>
+              </select>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="
+              px-3
+              py-2
+              mt-3
+              bg-rose-500
+              text-white
+              hover:ring
+              ring-rose-500/50
+              duration-300
+              rounded-lg
+            "
+          >
+            Join
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
