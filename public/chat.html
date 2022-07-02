@@ -7,8 +7,8 @@
     <title>FiChat</title>
   </head>
   <body class="text-slate-700">
-    <div class="h-screen p-3">
-      <div class="border rounded-t-lg px-2 py-1 sticky top-0 bg-white">
+    <div class="h-full">
+      <div class="border-b px-2 py-1 sticky top-0 bg-white">
         <div class="flex justify-between">
           <h1 id="roomName" class="font-bold text-rose-500 truncate">FiChat</h1>
           <div class="text-sm whitespace-nowrap">
@@ -21,32 +21,32 @@
         ></div>
       </div>
 
-      <div id="messagesContainer" class="p-3 overflow-y-auto border-x"></div>
+      <div id="messagesContainer" class="p-3 overflow-y-auto h-64"></div>
 
-      <form id="chatForm" class="sticky bottom-0">
+      <form id="chatForm" class="fixed inset-x-0 bottom-0">
         <div class="flex">
           <textarea
+            rows="1"
             name="textMessage"
             id="textMessage"
             class="
-              border border-r-0
+              border-t
               rounded-bl-lg
-              hover:border-rose-500
-              focus:border-rose-500
+              hover:bg-rose-100
+              focus:bg-rose-100
               w-full
               p-3
-              hover:ring
-              focus:ring
-              ring-rose-500/50
               duration-300
               outline-none
               placeholder:text-sm
+              resize-none
             "
             autofocus
             placeholder="Tulis pesan.."
             required
           ></textarea>
           <button
+            title="Kirim"
             type="submit"
             class="
               p-3
@@ -59,7 +59,21 @@
               outline-none
             "
           >
-            Kirim
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              data-icon="paper-plane"
+              class="w-4 mx-1"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                fill="currentColor"
+                d="M511.6 36.86l-64 415.1c-1.5 9.734-7.375 18.22-15.97 23.05c-4.844 2.719-10.27 4.097-15.68 4.097c-4.188 0-8.319-.8154-12.29-2.472l-122.6-51.1l-50.86 76.29C226.3 508.5 219.8 512 212.8 512C201.3 512 192 502.7 192 491.2v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96l-293.7 264.3L19.69 317.5C8.438 312.8 .8125 302.2 .0625 289.1s5.469-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"
+              ></path>
+            </svg>
           </button>
         </div>
       </form>

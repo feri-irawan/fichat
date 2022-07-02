@@ -24,10 +24,10 @@ const botName = {
   room: 0,
 }
 
-// Run when client connects
+// Jika client terhubung
 io.on('connection', (socket) => {
   socket.on('joinRoom', ({username, room}) => {
-    // Add user to users array on users.js
+    // Menambah user ke dalam array `users`
     const user = userJoin(socket.id, username, room)
 
     socket.join(user.room)
@@ -48,21 +48,21 @@ io.on('connection', (socket) => {
         )
       )
 
-    // Send users and room info
+    // Mengirim informasi users dan room
     io.to(user.room).emit('roomUsers', {
       room: user.room,
       users: getRoomUsers(user.room),
     })
   })
 
-  // Listen for chat message
+  // Jika ada event message dari client
   socket.on('message', (msg) => {
     const user = getCurrentUser(socket.id)
 
     io.to(user.room).emit('message', formatMessage(user, msg))
   })
 
-  // Runs when client disconnects
+  // Jika client disconnect
   socket.on('disconnect', () => {
     const user = userLeave(socket.id)
 
@@ -75,7 +75,7 @@ io.on('connection', (socket) => {
         )
       )
 
-      // Send users and room info
+      // Mengirim informasi users dan room
       io.to(user.room).emit('roomUsers', {
         room: user.room,
         users: getRoomUsers(user.room),
@@ -84,6 +84,6 @@ io.on('connection', (socket) => {
   })
 })
 
-const PORT = 3000 || process.env.PORT
+const PORT = process.env.PORT || 5000
 
-server.listen(PORT, () => console.log('Server running on post 3000'))
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`))
