@@ -1,3 +1,5 @@
+const chatWrapper = document.getElementById('chatWrapper')
+const loadingRoom = document.getElementById('loadingRoom')
 const chatForm = document.getElementById('chatForm')
 const chatMessages = document.getElementById('messagesContainer')
 
@@ -16,7 +18,9 @@ socket.emit('joinRoom', {
 
 // Get room and users
 socket.on('roomUsers', ({room, users}) => {
-  outputRoomName(room)
+  loadingRoom.classList.add('hidden')
+  chatWrapper.classList.remove('hidden')
+
   outputUsers(users)
 })
 
@@ -59,7 +63,7 @@ function outputMessage({user, text, time}) {
 
   div.innerHTML += `
   <div class="flex ${me ? 'justify-end' : ''}">
-    <div class="p-2 mb-2 max-w-max text-sm bg-rose-100 rounded-t-lg ${
+    <div class="p-2 mb-2 max-w-max text-sm bg-rose-200 rounded-t-lg ${
       me ? 'ml-5 rounded-bl-lg' : 'mr-5 rounded-br-lg'
     }">
         <div class="flex justify-between">
@@ -76,12 +80,6 @@ function outputMessage({user, text, time}) {
     left: 0,
     behavior: 'smooth',
   })
-}
-
-// Add room name to DOM
-function outputRoomName(room) {
-  const roomName = document.getElementById('roomName')
-  roomName.innerText = room
 }
 
 // Add users to DOM
